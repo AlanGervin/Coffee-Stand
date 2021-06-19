@@ -23,22 +23,25 @@ public class Espresso extends Product {
 		this.macchiato = macchiato;
 	}
 
+	//Constructor
 	public Espresso() {
 		this.extraShot = false;
 		this.macchiato = false;
+		this.setQuantity(1);
 	}
 	
 	public Espresso(String name, double price, String description, boolean extraShot, boolean macchiato) {
 		super(name, price, description);
 		this.extraShot = extraShot;
 		this.macchiato = macchiato;
+		this.setQuantity(1);
 	}
 	
 	@Override
 	public double calculateProductSubtotal() {
 		double total = 0.0;
 		
-		total += this.getQuantity()*this.getPrice();
+		total += this.getQuantity() * this.getPrice();
 		if (extraShot) {
 			total += 2.00 * this.getQuantity();
 		}
@@ -58,12 +61,12 @@ public class Espresso extends Product {
 	@Override
 	public void printOptions() {
 		in = new Scanner(System.in);
-		System.out.println("Would you like extra shot with that?");
+		System.out.println("Would you like extra shot with that y/n?");
 		String answer = in.next();
 		if (answer.equalsIgnoreCase("y")) {
 			this.setExtraShot(true);
 		}
-		System.out.println("Would you like macchiato with that?");
+		System.out.println("Would you like macchiato with that y/n?");
 		answer = in.next();
 		if (answer.equalsIgnoreCase("y")) {
 			this.setMacchiato(true);

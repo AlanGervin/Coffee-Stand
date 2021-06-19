@@ -11,12 +11,14 @@ public class Coffee extends Product {
 		super();
 		this.sugar = false;
 		this.milk = false;
+		this.setQuantity(1);
 	}
 	
 	public Coffee(String name, double price, String description, boolean sugar, boolean milk) {
 		super(name, price, description);
 		this.sugar = sugar;
 		this.milk = milk;
+		this.setQuantity(1);
 	}
 	
 		
@@ -35,9 +37,6 @@ public class Coffee extends Product {
 	public void setMilk(boolean milk) {
 		this.milk = milk;
 	}
-
-
-	
 	
 	@Override
 	public double calculateProductSubtotal() {
@@ -53,12 +52,12 @@ public class Coffee extends Product {
 	@Override
 	public void printOptions() {
 		
-		System.out.println("Would you like sugar with that?");
+		System.out.println("Would you like sugar with that y/n?");
 		String answer = in.next();
 		if (answer.equalsIgnoreCase("y")) {
 			this.setSugar(true);
 		}
-		System.out.println("Would you like milk with that?");
+		System.out.println("Would you like milk with that y/n?");
 		answer = in.next();
 		if (answer.equalsIgnoreCase("y")) {
 			this.setMilk(true);

@@ -21,9 +21,7 @@ public class Store {
 //				in1.nextLine();
 				if (itemNumber == 1) {
 					sc.addItem(new Coffee("French Roast", 4.50, "Hot java",false, false));
-					System.out.print("Size -1: ");
-					System.out.println(sc.size()-1);
-					//System.out.println(sc.getIndex(sc.size()-1).getClass());
+
 					if (sc.getIndex(sc.size()-1) instanceof Coffee) {
 						Coffee m = (Coffee)sc.getIndex(sc.size()-1);
 						m.printOptions();

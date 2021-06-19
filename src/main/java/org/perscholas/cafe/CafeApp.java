@@ -12,9 +12,32 @@ public class CafeApp {
 		ShoppingCart sc = s.getShoppingCart();
 		
 		for (int i = 0; i < sc.size(); i++) {
-			total += sc.getIndex(i).getPrice();
-			//enter logic to display name, price, qty, subtotal,
-			// alsy extra shot, machiatto, peppermint, whipped cream, sugar or milk if they exist
+			
+			if (sc.getIndex(i) instanceof Coffee) {
+				Coffee a = (Coffee)sc.getIndex(i);
+				System.out.printf("Item: %s, Price: $%.2f, Qty: %d,"
+						+ " Subtotal: $%.2f, Milk: %s, Sugar: %s%n", a.getName(), a.getPrice(),
+						a.getQuantity(), a.calculateProductSubtotal(), a.isMilk(), a.isSugar());
+				total += a.calculateProductSubtotal();
+			}
+			
+			if (sc.getIndex(i) instanceof Cappuccino) {
+				Cappuccino a = (Cappuccino)sc.getIndex(i);
+				System.out.printf("Item: %s, Price: $%.2f, Qty: %d,"
+						+ " Subtotal: $%.2f, Peppermint: %s, Whipped Cream: %s%n", 
+						a.getName(), a.getPrice(),a.getQuantity(),
+						a.calculateProductSubtotal(), a.isPeppermint(), a.isWhippedCream());
+				total += a.calculateProductSubtotal();
+			}
+			
+			if (sc.getIndex(i) instanceof Espresso) {
+				Espresso a = (Espresso)sc.getIndex(i);
+				System.out.printf("Item: %s, Price: $%.2f, Qty: %d,"
+						+ " Subtotal: $%.2f, Extra shot: %s, macchiato: %s%n", 
+						a.getName(), a.getPrice(),a.getQuantity(),
+						a.calculateProductSubtotal(), a.isExtraShot(), a.isMacchiato());
+				total += a.calculateProductSubtotal();
+			}
 		}
 
 		System.out.printf("Purchase subtotal: %.2f%n", total);
